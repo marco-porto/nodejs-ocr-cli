@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./index.js ./1.png -o"
+    "dev": "node ./index.js ./1.png"
   },
   "keywords": [],
   "author": "",
