@@ -1,0 +1,16 @@
+{
+  "name": "node-ocr-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ./index.js ./1.png -o"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "^1.2.5",
+    "tesseract.js": "^2.1.4"
+  }
+}

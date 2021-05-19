@@ -1,0 +1,1 @@
+texto reconhecido enviado para out.txt
