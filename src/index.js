@@ -4,7 +4,6 @@ const colors = require("colors");
 colors.setTheme({
   success: "green",
   help: "cyan",
-  warn: "yellow",
   info: "blue",
   error: "red",
 });
@@ -33,27 +32,37 @@ function OCR(payload) {
     }
   });
 }
-
+function guide() {
+  console.log("[OCR] help\n".help);
+  console.log(" -f".bold,": define path to input image/file");
+  console.log(
+    " -l".bold,": define language, default is eng, go to https://tesseract-ocr.github.io/tessdoc/Data-Files-in-different-versions.html for more information"
+  );
+  console.log(" -o".bold,": if specified creates a file with recognized text (out.txt)");
+}
 function handleArgs(args) {
   let payload = {};
-  if (args["f"]) {
-    payload.file = args["f"]; //image path for OCR
-    //Lang selector (default => eng)
-    if (Object.keys(args).includes("l")) {
-      payload.lang = args["l"];
-    } else {
-      payload.lang = "eng";
-    }
-    //Output selector (default => console.log())
-    if (Object.keys(args).includes("o")) {
-      payload.output = true;
-    } else {
-      payload.output = false;
-    }
-    OCR(payload);
+  if (args["help"]) {
+    guide();
   } else {
-    console.log("No file passed to read");
+    if (args["f"]) {
+      payload.file = args["f"]; //image path for OCR
+      //Lang selector (default => eng)
+      if (Object.keys(args).includes("l")) {
+        payload.lang = args["l"];
+      } else {
+        payload.lang = "eng";
+      }
+      //Output selector (default => console.log())
+      if (Object.keys(args).includes("o")) {
+        payload.output = true;
+      } else {
+        payload.output = false;
+      }
+      OCR(payload);
+    } else {
+      console.log("[OCR] No input file, --help for help".error);
+    }
   }
 }
-
 handleArgs(args);
